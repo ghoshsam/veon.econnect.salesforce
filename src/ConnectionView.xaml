@@ -1,0 +1,90 @@
+<UserControl x:Class="Veon.eConnect.Salesforce.ConnectionView" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:appseconnect="http://schemas.appseconnect.com/API/"
+             mc:Ignorable="d" d:DesignHeight="500" d:DesignWidth="500">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/InSync.eConnect.APPSeCONNECT;component/UI/Styles/Generic.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Height="400">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="85*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="161*" />
+            </Grid.ColumnDefinitions>
+
+            <!--<Grid.Resources>
+                <Style TargetType="Button" x:Key="btnStyle">
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                    <Setter Property="VerticalAlignment" Value="Top" />
+                    <Setter Property="FontSize" Value="10.667" />
+                    <Setter Property="FontFamily" Value="Segoe UI Semibold" />
+                    <Setter Property="HorizontalAlignment" Value="Left" />
+                </Style>
+            </Grid.Resources>-->
+
+            <!-- Todo: Design the UI to take Credentails -->
+
+            
+            <Label Grid.Row="0" Grid.Column="0" FontSize="15"  FontFamily="Arial" HorizontalAlignment="Left" Width="201" Grid.ColumnSpan="2">User Name</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="10,5" Text="{Binding UserName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            <Label Grid.Row="1" Grid.Column="0" FontSize="15"  FontFamily="Arial">Password</Label>
+            <PasswordBox Grid.Row="1" Grid.Column="1"  Margin="10,10,10,10" appseconnect:PasswordHelper.Attach="True" appseconnect:PasswordHelper.Password="{Binding Password, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></PasswordBox>
+            <Label Grid.Row="2" Grid.Column="0" FontSize="15" FontFamily="Arial">Call Back URL</Label>
+            <PasswordBox Grid.Row="2" Grid.Column="1" Margin="10,10,10,10" appseconnect:PasswordHelper.Attach="True" appseconnect:PasswordHelper.Password="{Binding CallBackURL, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></PasswordBox>
+            <Label Grid.Row="3" Grid.Column="0" FontSize="15"  FontFamily="Arial">Consumer Secret</Label>
+            <PasswordBox Grid.Row="3" Grid.Column="1"  Margin="10,10,10,10"  appseconnect:PasswordHelper.Attach="True"  appseconnect:PasswordHelper.Password="{Binding ConsumerSecret, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></PasswordBox>
+            <Label Grid.Row="4" Grid.Column="0" FontSize="15"  FontFamily="Arial">Consumer Key</Label>
+            <PasswordBox Grid.Row="4" Grid.Column="1"  Margin="10,10,10,10"  appseconnect:PasswordHelper.Attach="True"  appseconnect:PasswordHelper.Password="{Binding ConsumerKey, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></PasswordBox>
+            <Label Grid.Row="5" Grid.Column="0" FontSize="15" FontFamily="Arial">Security Token</Label>
+            <PasswordBox Grid.Row="5" Grid.Column="1"   Margin="10,10,10,10" appseconnect:PasswordHelper.Attach="True"  appseconnect:PasswordHelper.Password="{Binding Token, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"></PasswordBox>
+            <Label Grid.Row="6" Grid.Column="0" FontSize="15" FontFamily="Arial">Security Layer</Label>
+            <ComboBox  Grid.Row="6" Grid.Column="1"  Margin="10,10,10,10" ItemsSource="{Binding SecurityProtocols}"
+                       SelectedItem="{Binding Protocol,Mode=TwoWay }" />
+            <Label Grid.Row="7" Grid.Column="1" Content="{Binding ConnectionStatus,Mode=TwoWay}" 
+                   Foreground="{Binding ForeColor}"  FontWeight="Bold" FontSize="12" FontFamily="Segoe UI Semibold"   VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Margin="0,10,24,0" />
+            <ProgressBar IsIndeterminate="True" Grid.Row="7" Grid.Column="1" Width="180" MinHeight="10" Foreground="#FF0079C3" VerticalAlignment="Center" HorizontalAlignment="Center"  Visibility="{Binding ProgressBar}" HorizontalContentAlignment="Center" Margin="14,32,128,0" />
+            
+            <!--<DockPanel Grid.Row="8" Grid.ColumnSpan="2">
+                <Button
+                    Content="Validate"
+                    Command="{Binding ValidateCommand}" Style="{StaticResource WindowButtonStyle }" />
+                <Button 
+                    Content="Save" 
+                    Command="{Binding SaveCommand}" Style="{StaticResource WindowButtonStyle}"/>
+            </DockPanel>-->
+
+            <Grid Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height ="*"/>
+                    <RowDefinition Height ="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <!--<Label  Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Content="{Binding ConnectionStatus,Mode=TwoWay}" Foreground="{Binding ForeColor}" Margin="0,0,0,10" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center"  />-->
+                <!--<ProgressBar IsIndeterminate="True" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Width="180" MinHeight="10" Foreground="#FF0079C3" VerticalAlignment="Center" HorizontalAlignment="Center"  Visibility="{Binding ProgressbarVisibility}" HorizontalContentAlignment="Center" />-->
+                <Button Style="{StaticResource WindowButtonStyle}"  Grid.Row="2" Grid.Column="0"  Content="_Validate" HorizontalAlignment="Right" Command="{Binding ValidateCommand}" VerticalAlignment="Top" Width="91" Margin="0,0,7,0" />
+                <Button Style="{DynamicResource WindowButtonStyle}" Grid.Row="2" Grid.Column="1" Content="_Save" HorizontalAlignment="Left" Command="{Binding SaveCommand}" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" Width="91" Margin="7,0,0,0" />
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>
