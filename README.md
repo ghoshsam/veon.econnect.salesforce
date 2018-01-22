@@ -18,9 +18,7 @@ Interfaces :
 For more details, do check our documentation at : 
 http://support.appseconnect.com/support/solutions/articles/4000049687
 
-Also follow the SDK API references from :
-
-http://isdn.appseconnect.com/
+Also follow the SDK API references from : http://isdn.appseconnect.com/
 
 
 Also for further support drop us a mail at support@insync.co.in.
